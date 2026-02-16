@@ -1,0 +1,79 @@
+global:
+
+  ingress:
+
+    enabled: true
+    rules:
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-{{ requiredEnv "NAMESPACE" }}.public.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-oneapp-{{ requiredEnv "NAMESPACE" }}.public.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "coaching-ccmpreprod.tdoctest.com"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "coaching-oneapp-ccmpreprod.tdoctest.com"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+
+  ingress:
+    enabled: true
+    rules:
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-{{ requiredEnv "NAMESPACE" }}.public.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-oneapp-{{ requiredEnv "NAMESPACE" }}.public.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "coaching-ccmpreprod.tdoctest.com"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "coaching-oneapp-ccmpreprod.tdoctest.com"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+
+
+  ingressinternal:
+    enabled: true
+    rules:
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-{{ requiredEnv "NAMESPACE" }}.private.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-oneapp-{{ requiredEnv "NAMESPACE" }}.private.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+
+  ingressinternal:
+    enabled: true
+    rules:
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-{{ requiredEnv "NAMESPACE" }}.private.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000
+      - host: "{{ requiredEnv "IMAGE_NAME" }}-oneapp-{{ requiredEnv "NAMESPACE" }}.private.{{ requiredEnv "DOMAIN" }}"
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 9000

@@ -1,0 +1,9 @@
+#Dockerfile
+Dockerfile.*
+README.md
+
+# add ignore nodejs files
+node_modules
+
+# exclude helm files
+config/deploy/

@@ -1,0 +1,3 @@
+env.ENVIRONMENT = "test"
+env.FINN_API = "https://finnhub.io/"
+env.API_KEY = "d67mf01r01qobepihgi0d67mf01r01qobepihgig"
