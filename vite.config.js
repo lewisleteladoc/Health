@@ -8,16 +8,23 @@ export default defineConfig(({ mode }) => {
   
   return {
     plugins: [react()],
-  server: {
-    hot: true,
-    // allowedHosts: true,
-    port: parseInt(env.VITE_PORT) || 5000,
-    allowedHosts: [
-      'health.localhost.lewisle.com'
-    ]
-  },
-  define: {
-      __APP_ENV__: JSON.stringify(env.APP_ENV),
+    server: {
+      hot: true,
+      // allowedHosts: true,
+      port: parseInt(env.VITE_PORT) || 5000,
+      allowedHosts: [
+        'health.localhost.lewisle.com'
+      ]
     },
+    define: {
+        // 1. First, define the process.env object so it exists in the browser
+        'process.env': {}, 
+        
+        // 2. Then define your specific variables
+        'process.env.APP_HOST': JSON.stringify(env['env.HOST']),
+        'process.env.FINN_API': JSON.stringify(env['env.FINN_API']),
+        'process.env.API_KEY': JSON.stringify(env['env.API_KEY']),
+        __APP_ENV__: JSON.stringify(env.APP_ENV),
+      },
   };
 })

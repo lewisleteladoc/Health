@@ -3,6 +3,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const apiEndpoint = process.env.FINN_API; 
+
+  console.log("api 2: ", apiEndpoint);
 
   return (
     <>      
