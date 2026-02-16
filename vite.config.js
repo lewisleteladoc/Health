@@ -10,11 +10,11 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
   server: {
     hot: true,
-    allowedHosts: true,
-    port: parseInt(env.VITE_PORT) || 5000
-    // allowedHosts: [
-    //   'health.localhost.mydomain.com'
-    // ]
+    // allowedHosts: true,
+    port: parseInt(env.VITE_PORT) || 5000,
+    allowedHosts: [
+      'health.localhost.lewisle.com'
+    ]
   },
   define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
