@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(choices: 'azure\goog', description: 'Data Center', name: 'DATACENTER')
+        choice(choices: 'azure\ngoog', description: 'Data Center', name: 'DATACENTER')
         string(defaultValue: '', description: 'Cluster name', name: 'CLUSTER')        
     }
 
