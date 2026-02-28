@@ -21,7 +21,6 @@ export default defineConfig(({ mode }) => {
         'process.env': {}, 
         
         // 2. Then define your specific variables
-        'process.env.APP_HOST': JSON.stringify(env['env.HOST']),
         'process.env.FINN_API': JSON.stringify(env['env.FINN_API']),
         'process.env.API_KEY': JSON.stringify(env['env.API_KEY']),
         __APP_ENV__: JSON.stringify(env.APP_ENV),

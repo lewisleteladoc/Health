@@ -1,6 +1,10 @@
 # Use a stable LTS version (Node 19 is End-of-Life; 20 or 22 is better)
 FROM node:20-alpine
 
+# Build-time arg from Jenkins (from .env.test.groovy)
+ARG FINN_API
+ENV FINN_API=${FINN_API}
+
 # Set the working directory once at the top
 WORKDIR /usr/app
 

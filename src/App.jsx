@@ -1,25 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+import { Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // correct
+import { mainRoutes } from './routes/routes.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-  const apiEndpoint = process.env.FINN_API; 
-
-  console.log("api 2: ", apiEndpoint);
-
+function App() {  
   return (
-    <>      
-      <h1>Health</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>        
-      </div>
-      <p className="read-the-docs">
-        My personal health journey
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          {mainRoutes.map(({ id, path, component: Component }) => (
+            <Route key={id} path={path} element={<Component />} />
+          ))}
+          <Route path="*" element={<div>404jlkjjlkjwelktjlkdsjglkjdslkgdklasldjflasf</div>} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FinnHub from "../api/FinnHub";
 import WatchListAPI from "../api/WatchListAPI";
 
-function PickOfTheDay () {
+function Health () {
   const [quote, setQuote] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function PickOfTheDay () {
 
   return (
     <div>
-      <h1>PickOfTheDay Page</h1>
+      <h1>Health Page</h1>
       {quote ? (
         <p>Stock Price: {JSON.stringify(quote)}</p>
       ) : (
@@ -30,4 +30,4 @@ function PickOfTheDay () {
   );
 }
 
-export default PickOfTheDay;
+export default Health;

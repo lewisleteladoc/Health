@@ -1,11 +1,15 @@
 import axios from "axios";
 
-const apiEndpoint = process.env.FINN_API; 
+const apiEndpoint = "http://localhost:9090"; //process.env.FINN_API; 
 
-const FinnHub = {    
-    async getStockPrice(symbol) {
+const WatchListAPI = {    
+    async createWatchlist(name) {
+        const watchlistName = {
+            watchlistName: 'BR'
+        };
+
         try {
-            const response = await axios.get(`${apiEndpoint}/api/stocklookUp/price?symbol=${symbol}`);            
+            const response = await axios.post(`${apiEndpoint}/api/watchlist`, watchlistName);            
             return response;
         } catch (error) {
             console.error(error);
@@ -22,4 +26,4 @@ const FinnHub = {
 
 };
 
-export default FinnHub;
+export default WatchListAPI;
