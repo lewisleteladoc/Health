@@ -1,11 +1,24 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(choices: 'azure\ngoog', description: 'Data Center', name: 'DATACENTER')
+        string(defaultValue: '', description: 'Cluster name', name: 'CLUSTER')        
+    }
+
     stages {
+        stage('Load environment') {
+            steps {
+                load '.env.test.groovy'
+            }
+        }
+
         stage('Docker Build') {
             steps {
-                // This builds your image
-                sh "docker build -t health-app:latest ."
+                script {
+                    def finnApi = env.FINN_API
+                    sh "docker build -t health-app:latest --build-arg FINN_API=${finnApi} ."
+                }
             }
         }
 
@@ -23,4 +36,3 @@ pipeline {
         }
     }
 }
-

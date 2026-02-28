@@ -1,22 +1,25 @@
-FROM node:19-alpine
+# Use a stable LTS version (Node 19 is End-of-Life; 20 or 22 is better)
+FROM node:20-alpine
 
-# Copy package.json, wildcard used so both package.json AND package-lock.json are copied
-# slash '/' at the end of app is important, so it created an app directory, otherwise you'll get an error
-COPY package*.json /usr/app/
+# Build-time arg from Jenkins (from .env.test.groovy)
+ARG FINN_API
+ENV FINN_API=${FINN_API}
 
-# Copy app files from src directory
-COPY src /usr/app/
-
-# Create app directory & set default dir so that next commands executes in /usr/app dir, liked cd-ing into /usr/app to execute npm install
+# Set the working directory once at the top
 WORKDIR /usr/app
 
-# Install app dependencies
+# 1. Copy package files first to leverage Docker cache
+COPY package*.json ./
+
+# 2. Install dependencies
 RUN npm install
 
-# 4. Copy the rest of your application code
+# 3. Copy the rest of the application code (including your config and src)
 COPY . .
 
+# 4. Expose the port your "Health" script uses
 EXPOSE 5000
 
-# 6. Start the "galaxy" script automatically
+# 5. Start the application
+# Note: Ensure your "Health" script in package.json is: "vite --port 5000 --host"
 CMD ["npm", "run", "Health"]

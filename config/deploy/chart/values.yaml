@@ -1,0 +1,15 @@
+global:
+  servicebase:
+    enabled: false
+
+  ingress:
+    enabled: false
+
+  job:
+    enabled: false
+
+  cronjob:
+    enabled: false  
+
+  secretsmanager:
+    enabled: false
