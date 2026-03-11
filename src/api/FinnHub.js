@@ -1,11 +1,11 @@
-import axios from "axios";
+import AXIOS_FINNHUB from "../AXIOS/AXIOS_FINNHUB";
 
 const apiEndpoint = process.env.FINN_API; 
 
 const FinnHub = {    
     async getStockPrice(symbol) {
         try {
-            const response = await axios.get(`${apiEndpoint}/api/stocklookUp/price?symbol=${symbol}`);            
+            const response = await AXIOS_FINNHUB.get(`/api/stocklookUp/price?symbol=${symbol}`);            
             return response;
         } catch (error) {
             console.error(error);
@@ -13,7 +13,7 @@ const FinnHub = {
     },
     async getStockLookUp(symbol) {
         try {
-            const response = await axios.get(`${apiEndpoint}/api/stocklookup?symbol=${symbol}`);            
+            const response = await AXIOS_FINNHUB.get(`/api/stocklookup?symbol=${symbol}`);            
             return response;
         } catch (error) {
             console.error(error);

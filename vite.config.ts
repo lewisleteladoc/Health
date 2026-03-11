@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
     server: {
       hot: true,
       // allowedHosts: true,
-      port: parseInt(env.VITE_PORT) || 5000,
+      port: parseInt(env.VITE_PORT) || 3000,
       allowedHosts: [
         'health.localhost.lewisle.com'
       ]
@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
         // 2. Then define your specific variables
         'process.env.FINN_API': JSON.stringify(env['env.FINN_API']),
         'process.env.API_KEY': JSON.stringify(env['env.API_KEY']),
+        'process.env.GENERIC_AUTHENTICATOR': JSON.stringify(env['env.GENERIC_AUTHENTICATOR']),
         __APP_ENV__: JSON.stringify(env.APP_ENV),
       },
   };
